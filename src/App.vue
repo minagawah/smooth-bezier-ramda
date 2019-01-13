@@ -164,8 +164,8 @@ const bezierCommand = R.compose(
     // (3) ---> "endX, endY"
     R.compose(
       R.apply(getControlPoint), // f(prev2, prev, curr, TRUE) ---> [cx, cy]
-      R.append(true), // [prev2, prev, curr] ---> [prev2, prev, curr, TRUE]
-      R.converge(listify, [R.prop('prev'), R.prop('curr'), R.prop('next')]) // [prev2, prev, curr]
+      R.append(true), // [prev, curr, next] ---> [prev, curr, next, TRUE]
+      R.converge(listify, [R.prop('prev'), R.prop('curr'), R.prop('next')]) // [prev, curr, next]
     ),
     // (4) ---> "x, y"
     R.prop('curr')
